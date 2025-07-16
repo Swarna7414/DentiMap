@@ -73,7 +73,7 @@ const Home = () => {
       </div>
 
       {/* Animated Tooth */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div className="bottom-8 left-1/2 transform -translate-x-1/2 absolute hidden lg:block">
         <div className="animate-bounce">
           <img 
             src={Bounce}
