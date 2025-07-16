@@ -18,7 +18,7 @@ const Home = () => {
         <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 sm:pt-24">
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
@@ -73,7 +73,7 @@ const Home = () => {
       </div>
 
       {/* Animated Tooth */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div className="bottom-8 left-1/2 transform -translate-x-1/2 absolute hidden lg:block">
         <div className="animate-bounce">
           <img 
             src={Bounce}

@@ -14,7 +14,7 @@ const Services = () => {
       icon: Camera,
       title: "Live AI Model",
       description: "Real-time dental analysis using advanced microcamera technology connected to our AI system.",
-      features: ["Continuous monitoring", "Instant diagnosis", "Real-time alerts", "Live consultation"],
+      features: ["Continuous monitoring", "Instant diagnosis", "Real-time alerts"],
       gradient: "from-blue-500 to-cyan-500"
     },
     {
