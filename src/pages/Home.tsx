@@ -26,10 +26,12 @@ const Home = () => {
                 DentiMap
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
-              Revolutionary AI-powered dental diagnostics using advanced microcamera technology 
-              for real-time teeth analysis and disease detection.
-            </p>
+            <div className="mt-6">
+              <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
+                Revolutionary AI-powered dental diagnostics using advanced microcamera technology 
+                for real-time teeth analysis and disease detection.
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -39,7 +41,7 @@ const Home = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg bg-black">
+            <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg bg-black w-1/3 self-center">
               Learn More
             </Button>
           </div>
