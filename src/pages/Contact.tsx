@@ -58,7 +58,7 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <div className="pt-16">
         {/* Hero Section */}
-        <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-white to-white dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20">
+        <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-white to-white dark:from-black dark:via-black dark:to-black">
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Get in <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Touch</span>
@@ -70,7 +70,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="py-5 px-4 sm:px-6 lg:px-8">
+        <div className="py-5 px-4 sm:px-6 lg:px-8 dark:bg-black">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-12">
               {/* Contact Information */}
