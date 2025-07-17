@@ -120,12 +120,12 @@ const Services = () => {
                 <img 
                   src={Test}
                   alt="AI Technology in Action"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[500px] object-cover hidden md:block"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <h3 className="text-xl font-bold mb-2">AI-Powered Analysis</h3>
-                  <p className="text-gray-200">Real-time processing of dental imagery for instant diagnosis</p>
+                  <h3 className="text-xl font-bold mb-2">Precision Dental Diagnostics</h3>
+                  <p className="text-gray-200">Experience cutting-edge dental care through AI-enhanced imaging and expert analysis for early and accurate detection of oral health issues.</p>
                 </div>
               </div>
             </div>
