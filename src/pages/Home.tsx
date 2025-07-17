@@ -27,7 +27,7 @@ const Home = () => {
               </span>
             </h1>
             <div className="mt-6">
-              <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
+              <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-500 max-w-4xl mx-auto">
                 Revolutionary AI-powered dental diagnostics using advanced microcamera technology 
                 for real-time teeth analysis and disease detection.
               </p>
