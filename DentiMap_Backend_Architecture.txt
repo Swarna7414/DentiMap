@@ -1,0 +1,691 @@
+# DentiMap Backend Architecture - Spring Boot with Spring Security
+# AI-Powered Dental Diagnostics Platform
+
+## 1. PROJECT OVERVIEW
+=====================================
+- Project: DentiMap Backend API
+- Framework: Spring Boot 3.2+
+- Security: Spring Security 6+ with OAuth2
+- Database: PostgreSQL with JPA/Hibernate
+- AI Integration: REST API integration with Python ML models
+- Authentication: JWT + OAuth2 (Google, Facebook) + Email/Password
+- File Storage: AWS S3 / Local Storage for dental images
+- Caching: Redis
+- Documentation: OpenAPI 3.0 (Swagger)
+
+## 2. TECHNOLOGY STACK
+=====================================
+### Core Framework:
+- Spring Boot 3.2+
+- Spring Security 6+
+- Spring Data JPA
+- Spring Web MVC
+- Spring Validation
+
+### Security & Authentication:
+- Spring Security OAuth2 Client
+- Spring Security OAuth2 Resource Server
+- JWT (JSON Web Tokens)
+- BCrypt Password Encoding
+- CORS Configuration
+
+### Database & Persistence:
+- PostgreSQL 15+
+- Spring Data JPA
+- Hibernate ORM
+- Flyway Database Migration
+- Connection Pooling (HikariCP)
+
+### Caching & Performance:
+- Redis Cache
+- Spring Cache Abstraction
+- Database Query Optimization
+
+### AI Integration:
+- RestTemplate/WebClient for AI API calls
+- Multipart File Handling
+- Image Processing (BufferedImage)
+- Async Processing (@Async)
+
+### Monitoring & Logging:
+- Spring Boot Actuator
+- Logback with SLF4J
+- Micrometer Metrics
+- Health Checks
+
+## 3. PROJECT STRUCTURE
+=====================================
+```
+src/main/java/com/dentimap/
+├── DentimapApplication.java
+├── config/
+│   ├── SecurityConfig.java
+│   ├── OAuth2Config.java
+│   ├── JwtConfig.java
+│   ├── RedisConfig.java
+│   ├── CorsConfig.java
+│   ├── SwaggerConfig.java
+│   └── AsyncConfig.java
+├── controller/
+│   ├── AuthController.java
+│   ├── UserController.java
+│   ├── DiagnosticController.java
+│   ├── AIAnalysisController.java
+│   ├── FileUploadController.java
+│   └── ChatController.java
+├── service/
+│   ├── AuthService.java
+│   ├── UserService.java
+│   ├── DiagnosticService.java
+│   ├── AIModelService.java
+│   ├── FileStorageService.java
+│   ├── EmailService.java
+│   └── ChatService.java
+├── repository/
+│   ├── UserRepository.java
+│   ├── DiagnosticRepository.java
+│   ├── ChatSessionRepository.java
+│   └── FileMetadataRepository.java
+├── entity/
+│   ├── User.java
+│   ├── Diagnostic.java
+│   ├── ChatSession.java
+│   ├── FileMetadata.java
+│   └── AIAnalysisResult.java
+├── dto/
+│   ├── request/
+│   │   ├── LoginRequest.java
+│   │   ├── RegisterRequest.java
+│   │   ├── DiagnosticRequest.java
+│   │   └── ChatRequest.java
+│   └── response/
+│       ├── AuthResponse.java
+│       ├── UserResponse.java
+│       ├── DiagnosticResponse.java
+│       └── AIAnalysisResponse.java
+├── security/
+│   ├── JwtAuthenticationFilter.java
+│   ├── JwtTokenProvider.java
+│   ├── OAuth2AuthenticationSuccessHandler.java
+│   ├── OAuth2AuthenticationFailureHandler.java
+│   ├── CustomUserDetailsService.java
+│   └── SecurityUtils.java
+├── exception/
+│   ├── GlobalExceptionHandler.java
+│   ├── CustomExceptions.java
+│   └── ErrorResponse.java
+├── util/
+│   ├── ImageProcessor.java
+│   ├── FileValidator.java
+│   └── Constants.java
+└── integration/
+    ├── AIModelClient.java
+    └── EmailClient.java
+```
+
+## 4. SECURITY ARCHITECTURE
+=====================================
+
+### 4.1 Spring Security Configuration:
+```java
+@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true)
+public class SecurityConfig {
+    
+    // JWT Authentication Filter Chain
+    // OAuth2 Login Configuration
+    // CORS Configuration
+    // Password Encoder (BCrypt)
+    // Authentication Manager
+    // Security Filter Chain
+}
+```
+
+### 4.2 Authentication Methods:
+
+#### A. Email/Password Authentication:
+- User Registration with email verification
+- Password encryption using BCrypt
+- JWT token generation and validation
+- Refresh token mechanism
+- Password reset functionality
+
+#### B. OAuth2 Authentication:
+- Google OAuth2 Integration
+- Facebook OAuth2 Integration
+- GitHub OAuth2 Integration (optional)
+- Automatic user creation for OAuth2 users
+- JWT token generation for OAuth2 users
+
+### 4.3 JWT Token Management:
+- Access Token (15 minutes expiry)
+- Refresh Token (7 days expiry)
+- Token blacklisting for logout
+- Token validation middleware
+- Automatic token refresh
+
+### 4.4 Security Features:
+- CORS configuration for frontend
+- CSRF protection
+- Rate limiting per endpoint
+- Input validation and sanitization
+- SQL injection prevention
+- XSS protection
+- Secure headers (Helmet equivalent)
+
+## 5. DATABASE SCHEMA
+=====================================
+
+### 5.1 User Management:
+```sql
+-- Users table
+CREATE TABLE users (
+    id BIGSERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255),
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    phone VARCHAR(20),
+    date_of_birth DATE,
+    provider VARCHAR(50) DEFAULT 'LOCAL',
+    provider_id VARCHAR(255),
+    email_verified BOOLEAN DEFAULT FALSE,
+    enabled BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Roles table
+CREATE TABLE roles (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL
+);
+
+-- User roles junction table
+CREATE TABLE user_roles (
+    user_id BIGINT REFERENCES users(id),
+    role_id BIGINT REFERENCES roles(id),
+    PRIMARY KEY (user_id, role_id)
+);
+```
+
+### 5.2 Diagnostic System:
+```sql
+-- Diagnostics table
+CREATE TABLE diagnostics (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT REFERENCES users(id),
+    image_url VARCHAR(500),
+    analysis_type VARCHAR(50),
+    ai_confidence DECIMAL(5,4),
+    diagnosis_result TEXT,
+    recommendations TEXT,
+    severity_level VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- AI Analysis Results
+CREATE TABLE ai_analysis_results (
+    id BIGSERIAL PRIMARY KEY,
+    diagnostic_id BIGINT REFERENCES diagnostics(id),
+    model_version VARCHAR(50),
+    detected_conditions JSONB,
+    confidence_scores JSONB,
+    processing_time_ms INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### 5.3 Chat System:
+```sql
+-- Chat sessions
+CREATE TABLE chat_sessions (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT REFERENCES users(id),
+    session_name VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Chat messages
+CREATE TABLE chat_messages (
+    id BIGSERIAL PRIMARY KEY,
+    session_id BIGINT REFERENCES chat_sessions(id),
+    message_type VARCHAR(20), -- USER, AI
+    content TEXT,
+    metadata JSONB,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### 5.4 File Management:
+```sql
+-- File metadata
+CREATE TABLE file_metadata (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT REFERENCES users(id),
+    original_filename VARCHAR(255),
+    stored_filename VARCHAR(255),
+    file_path VARCHAR(500),
+    file_size BIGINT,
+    mime_type VARCHAR(100),
+    upload_type VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+## 6. API ENDPOINTS
+=====================================
+
+### 6.1 Authentication Endpoints:
+```
+POST   /api/v1/auth/register          - User registration
+POST   /api/v1/auth/login             - Email/password login
+POST   /api/v1/auth/refresh           - Refresh JWT token
+POST   /api/v1/auth/logout            - User logout
+POST   /api/v1/auth/forgot-password   - Password reset request
+POST   /api/v1/auth/reset-password    - Password reset confirmation
+GET    /api/v1/auth/verify-email      - Email verification
+GET    /api/v1/auth/oauth2/google     - Google OAuth2 login
+GET    /api/v1/auth/oauth2/facebook   - Facebook OAuth2 login
+```
+
+### 6.2 User Management:
+```
+GET    /api/v1/users/profile          - Get user profile
+PUT    /api/v1/users/profile          - Update user profile
+DELETE /api/v1/users/account          - Delete user account
+GET    /api/v1/users/diagnostics      - Get user's diagnostic history
+```
+
+### 6.3 AI Diagnostic Endpoints:
+```
+POST   /api/v1/ai/analyze/upload      - Upload and analyze dental image
+POST   /api/v1/ai/analyze/live        - Live camera analysis
+GET    /api/v1/ai/analysis/{id}       - Get analysis result
+GET    /api/v1/ai/history             - Get analysis history
+POST   /api/v1/ai/reanalyze/{id}      - Re-analyze existing image
+```
+
+### 6.4 Chat System:
+```
+POST   /api/v1/chat/sessions          - Create new chat session
+GET    /api/v1/chat/sessions          - Get user's chat sessions
+GET    /api/v1/chat/sessions/{id}     - Get specific chat session
+POST   /api/v1/chat/sessions/{id}/messages - Send message
+DELETE /api/v1/chat/sessions/{id}     - Delete chat session
+```
+
+### 6.5 File Management:
+```
+POST   /api/v1/files/upload           - Upload dental images
+GET    /api/v1/files/{id}             - Download file
+DELETE /api/v1/files/{id}             - Delete file
+GET    /api/v1/files/metadata/{id}    - Get file metadata
+```
+
+## 7. AI MODEL INTEGRATION
+=====================================
+
+### 7.1 AI Service Architecture:
+```java
+@Service
+public class AIModelService {
+    
+    // Image preprocessing
+    public BufferedImage preprocessImage(MultipartFile file)
+    
+    // Call Python AI model API
+    public AIAnalysisResponse analyzeImage(BufferedImage image)
+    
+    // Real-time analysis for live camera
+    public Flux<AIAnalysisResponse> analyzeLiveStream(Flux<byte[]> imageStream)
+    
+    // Batch processing for multiple images
+    public List<AIAnalysisResponse> batchAnalyze(List<MultipartFile> files)
+    
+    // Model health check
+    public boolean isModelHealthy()
+}
+```
+
+### 7.2 AI Model Communication:
+- REST API calls to Python ML service
+- Async processing for large images
+- WebSocket for real-time analysis
+- Circuit breaker pattern for reliability
+- Retry mechanism with exponential backoff
+- Model versioning support
+
+### 7.3 Supported AI Features:
+- Dental disease detection
+- Cavity identification
+- Gum disease analysis
+- Teeth alignment assessment
+- Oral hygiene scoring
+- Treatment recommendations
+- Risk assessment
+
+## 8. SECURITY IMPLEMENTATION DETAILS
+=====================================
+
+### 8.1 JWT Configuration:
+```java
+@Component
+public class JwtTokenProvider {
+    
+    // Generate access token (15 min expiry)
+    public String generateAccessToken(UserPrincipal userPrincipal)
+    
+    // Generate refresh token (7 days expiry)
+    public String generateRefreshToken(UserPrincipal userPrincipal)
+    
+    // Validate token
+    public boolean validateToken(String token)
+    
+    // Extract user details from token
+    public UserPrincipal getUserPrincipalFromToken(String token)
+    
+    // Blacklist token on logout
+    public void blacklistToken(String token)
+}
+```
+
+### 8.2 OAuth2 Configuration:
+```java
+@Configuration
+@EnableOAuth2Client
+public class OAuth2Config {
+    
+    // Google OAuth2 client registration
+    // Facebook OAuth2 client registration
+    // Success/failure handlers
+    // Custom user service for OAuth2
+    // JWT token generation for OAuth2 users
+}
+```
+
+### 8.3 Password Security:
+- BCrypt with strength 12
+- Password complexity validation
+- Password history tracking
+- Account lockout after failed attempts
+- Password reset with secure tokens
+
+### 8.4 API Security:
+- Rate limiting per user/IP
+- Input validation with Bean Validation
+- SQL injection prevention with JPA
+- XSS protection with input sanitization
+- CORS configuration for frontend
+- Secure headers configuration
+
+## 9. CACHING STRATEGY
+=====================================
+
+### 9.1 Redis Cache Implementation:
+```java
+@Service
+@CacheConfig(cacheNames = "dentimap")
+public class CacheService {
+    
+    // Cache user sessions
+    @Cacheable(key = "#userId")
+    public UserSession getUserSession(Long userId)
+    
+    // Cache AI analysis results
+    @Cacheable(key = "#imageHash")
+    public AIAnalysisResponse getCachedAnalysis(String imageHash)
+    
+    // Cache diagnostic history
+    @Cacheable(key = "#userId + '_diagnostics'")
+    public List<Diagnostic> getUserDiagnostics(Long userId)
+}
+```
+
+### 9.2 Cache Strategy:
+- User sessions (30 minutes TTL)
+- AI analysis results (24 hours TTL)
+- Diagnostic history (1 hour TTL)
+- File metadata (6 hours TTL)
+- JWT blacklist (token expiry TTL)
+
+## 10. ERROR HANDLING & VALIDATION
+=====================================
+
+### 10.1 Global Exception Handler:
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    // Handle validation errors
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    
+    // Handle authentication errors
+    @ExceptionHandler(AuthenticationException.class)
+    
+    // Handle authorization errors
+    @ExceptionHandler(AccessDeniedException.class)
+    
+    // Handle AI service errors
+    @ExceptionHandler(AIServiceException.class)
+    
+    // Handle file upload errors
+    @ExceptionHandler(FileUploadException.class)
+}
+```
+
+### 10.2 Input Validation:
+- Bean Validation annotations
+- Custom validators for dental images
+- File type and size validation
+- Email format validation
+- Password strength validation
+
+## 11. MONITORING & LOGGING
+=====================================
+
+### 11.1 Application Monitoring:
+- Spring Boot Actuator endpoints
+- Health checks for database, Redis, AI service
+- Metrics collection with Micrometer
+- Custom metrics for AI analysis performance
+- JVM metrics monitoring
+
+### 11.2 Logging Strategy:
+- Structured logging with Logback
+- Different log levels for environments
+- Security event logging
+- AI analysis performance logging
+- Error tracking and alerting
+
+## 12. DEPLOYMENT CONFIGURATION
+=====================================
+
+### 12.1 Application Properties:
+```yaml
+# application.yml
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dentimap
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+          facebook:
+            client-id: ${FACEBOOK_CLIENT_ID}
+            client-secret: ${FACEBOOK_CLIENT_SECRET}
+  
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+  
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 900000  # 15 minutes
+  refresh-expiration: 604800000  # 7 days
+
+ai:
+  model:
+    url: ${AI_MODEL_URL}
+    api-key: ${AI_MODEL_API_KEY}
+    timeout: 30000
+```
+
+### 12.2 Docker Configuration:
+```dockerfile
+# Dockerfile
+FROM openjdk:17-jdk-slim
+VOLUME /tmp
+COPY target/dentimap-backend-1.0.0.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+### 12.3 Docker Compose:
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+  
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: dentimap
+      POSTGRES_USER: dentimap
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+```
+
+## 13. TESTING STRATEGY
+=====================================
+
+### 13.1 Unit Testing:
+- JUnit 5 for unit tests
+- Mockito for mocking dependencies
+- TestContainers for integration tests
+- Security testing with Spring Security Test
+- AI service mocking for testing
+
+### 13.2 Integration Testing:
+- Spring Boot Test slices
+- Database integration tests
+- OAuth2 integration tests
+- File upload integration tests
+- AI service integration tests
+
+## 14. API DOCUMENTATION
+=====================================
+
+### 14.1 OpenAPI 3.0 Configuration:
+```java
+@Configuration
+@OpenAPIDefinition(
+    info = @Info(
+        title = "DentiMap API",
+        version = "1.0.0",
+        description = "AI-Powered Dental Diagnostics Platform"
+    ),
+    security = @SecurityRequirement(name = "bearerAuth")
+)
+public class SwaggerConfig {
+    // OpenAPI configuration
+    // Security scheme configuration
+    // API documentation customization
+}
+```
+
+## 15. PERFORMANCE OPTIMIZATION
+=====================================
+
+### 15.1 Database Optimization:
+- Connection pooling with HikariCP
+- Database indexing strategy
+- Query optimization with JPA
+- Pagination for large datasets
+- Database connection monitoring
+
+### 15.2 Caching Optimization:
+- Multi-level caching strategy
+- Cache warming strategies
+- Cache invalidation policies
+- Redis cluster configuration
+- Cache hit ratio monitoring
+
+### 15.3 AI Integration Optimization:
+- Async processing for AI calls
+- Image compression before analysis
+- Batch processing capabilities
+- Circuit breaker for AI service
+- Response caching for similar images
+
+## 16. SECURITY BEST PRACTICES
+=====================================
+
+### 16.1 Authentication Security:
+- Strong password policies
+- Account lockout mechanisms
+- Multi-factor authentication (future)
+- Session management
+- Secure token storage
+
+### 16.2 API Security:
+- Rate limiting per endpoint
+- Input validation and sanitization
+- SQL injection prevention
+- XSS protection
+- CSRF protection
+- Secure headers
+
+### 16.3 Data Protection:
+- Encryption at rest
+- Encryption in transit
+- PII data protection
+- GDPR compliance
+- Data retention policies
+
+## 17. SCALABILITY CONSIDERATIONS
+=====================================
+
+### 17.1 Horizontal Scaling:
+- Stateless application design
+- Load balancer configuration
+- Database read replicas
+- Redis clustering
+- Microservices architecture (future)
+
+### 17.2 Performance Monitoring:
+- Application performance monitoring
+- Database performance monitoring
+- AI service performance tracking
+- Resource utilization monitoring
+- Alerting and notification system
+
+This comprehensive architecture provides a robust, secure, and scalable backend for your DentiMap application with Spring Security, OAuth2 integration, and AI model connectivity. The architecture follows Spring Boot best practices and includes all necessary components for a production-ready dental diagnostics platform.
