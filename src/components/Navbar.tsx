@@ -5,6 +5,7 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "./ThemeProvider";
 import Logo from "../asserts/Logo.png";
+import path from "path";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,6 +67,12 @@ const Navbar = () => {
                 <Sun className="h-5 w-5" />
               )}
             </Button>
+
+            <div>
+              <Link to="/login">
+                <button className="hover:bg-white hover:text-black px-3 py-1.5 hover:rounded-md transition-all duration-200">Login</button>
+              </Link>
+            </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
