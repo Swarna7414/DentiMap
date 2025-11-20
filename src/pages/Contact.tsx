@@ -1,15 +1,12 @@
 import { useState } from "react";
-import { LuMessageCircleMore } from "react-icons/lu";
 import { IoIosSend } from "react-icons/io";
 import { IoIosMail } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoLocation } from "react-icons/io5";
-import { CiClock2 } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import Footer from "@/components/Footer";
 
@@ -25,8 +22,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+      title: "Got it!",
+      description: "We'll be in touch soon.",
     });
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
@@ -38,169 +35,136 @@ const Contact = () => {
     }));
   };
 
-  const contactInfo = [
-    {
-      icon: IoIosMail,
-      title: "Email Us",
-      contact: "dentimap527@gmail.com",
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: FaPhoneAlt,
-      title: "Call Us",
-      contact: "+1 605 202 7777",
-      gradient: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: IoLocation,
-      title: "Visit Us",
-      contact: "414 E Clark St, Vermillion, SD-57069",
-      gradient: "from-green-500 to-teal-500"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <div className="pt-16">
-        
-        <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-white to-white dark:from-black dark:via-black dark:to-black">
-          <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Get in <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Touch</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Have questions about DentiMap? We're here to help. Reach out to our team for support, 
-              partnerships, or to learn more about our innovative dental technology.
-            </p>
-          </div>
-        </div>
+        <div className="py-12 px-4 sm:px-6 lg:px-8 bg-background">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-10">
+              <h1 className="text-4xl md:text-5xl font-semibold mb-3 text-foreground">
+                Contact Us
+              </h1>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Questions? Ideas? Just want to chat? Drop us a line and we'll get back to you.
+              </p>
+            </div>
 
-        <div className="py-5 px-4 sm:px-6 lg:px-8 bg-background dark:bg-black">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-3 gap-12">
-              
-              <div className="lg:col-span-1 space-y-8">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                  <div className="space-y-6">
-                    {contactInfo.map((info, index) => (
-                      <div key={index} className="flex items-start space-x-4">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${info.gradient} flex items-center justify-center flex-shrink-0`}>
-                          <info.icon className="h-8 w-8 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold mb-1">{info.title}</h3>
-                          <p className="text-sm font-medium">{info.contact}</p>
-                        </div>
+                  <h2 className="text-xl font-medium mb-4 text-foreground">Ways to reach us</h2>
+                  <div className="space-y-5">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
+                        <IoIosMail className="h-6 w-6 text-blue-600" />
                       </div>
-                    ))}
+                      <div>
+                        <p className="text-base font-medium text-muted-foreground mb-1">Email</p>
+                        <a 
+                          href="mailto:dentimap527@gmail.com" 
+                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
+                        >
+                          dentimap527@gmail.com
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
+                        <FaPhoneAlt className="h-6 w-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <p className="text-base font-medium text-muted-foreground mb-1">Phone</p>
+                        <a 
+                          href="tel:+16052027777" 
+                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
+                        >
+                          +1 605 202 7777
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
+                        <IoLocation className="h-6 w-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <p className="text-base font-medium text-muted-foreground mb-1">Location</p>
+                        <p className="text-foreground text-base">
+                          414 E Clark St<br />
+                          Vermillion, SD 57069
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                
-                <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-0">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <CiClock2 className="h-6 w-6 text-blue-600" />
-                      <span>Response Time</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm">Email Response</span>
-                        <span className="text-sm font-semibold text-blue-600">&lt; 2 hours</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm">Phone Support</span>
-                        <span className="text-sm font-semibold text-purple-600">10:00 am - 4:00 pm</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm">AI Chat</span>
-                        <span className="text-sm font-semibold text-green-600">Instant</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
 
-              
-              <div className="lg:col-span-2">
-                <Card className="border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
-                  <CardHeader>
-                    <CardTitle className="text-2xl flex items-center space-x-2">
-                      <LuMessageCircleMore className="h-6 w-6 text-blue-600" />
-                      <span>Send us a Message</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="name" className="text-sm font-medium">Full Name</Label>
-                          <Input
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            placeholder="Enter your full name"
-                            required
-                            className="h-12 border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 transition-colors"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
-                          <Input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Enter your email"
-                            required
-                            className="h-12 border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 transition-colors"
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="subject" className="text-sm font-medium">Subject</Label>
-                        <Input
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          placeholder="What's this about?"
-                          required
-                          className="h-12 border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 transition-colors"
-                        />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="message" className="text-sm font-medium">Message</Label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          placeholder="Tell us more about your inquiry..."
-                          required
-                          rows={6}
-                          className="border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 transition-colors resize-none"
-                        />
-                      </div>
-                      
-                      <Button 
-                        type="submit" 
-                        size="lg" 
-                        className="w-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white h-12 text-lg"
-                      >
-                        <IoIosSend className="mr-2 h-5 w-5" />
-                        Send Message
-                      </Button>
-                    </form>
-                  </CardContent>
-                </Card>
+              <div>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-base">Name</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      required
+                      className="h-12 text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-base">Email</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your.email@example.com"
+                      required
+                      className="h-12 text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="subject" className="text-base">Subject</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder="What's on your mind?"
+                      required
+                      className="h-12 text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-base">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us what you're thinking..."
+                      required
+                      rows={5}
+                      className="resize-none text-base"
+                    />
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-base"
+                  >
+                    <IoIosSend className="mr-2 h-5 w-5" />
+                    Send
+                  </Button>
+                </form>
               </div>
             </div>
           </div>
