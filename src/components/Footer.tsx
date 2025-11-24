@@ -15,7 +15,7 @@ const Footer = () => {
                 alt="DentiMap Logo" 
                 className="h-8 w-8"
               />
-              <span className="text-2xl font-bold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
                 DentiMap
               </span>
             </Link>
@@ -51,15 +51,15 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4 text-black dark:text-white">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-green-400" />
+                <Mail className="h-4 w-4 text-blue-400" />
                 <span className="text-black dark:text-white">dentimap527@gmail.com</span>
               </li>
               <li className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-green-400" />
+                <Phone className="h-4 w-4 text-blue-400" />
                 <span className="text-black dark:text-white">+1 605 202 7777</span>
               </li>
               <li className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 text-green-400 mt-1" />
+                <MapPin className="h-4 w-4 text-blue-400 mt-1" />
                 <span className="text-black dark:text-white">Vermillion,<br /> South Dakota- 57069</span>
               </li>
             </ul>

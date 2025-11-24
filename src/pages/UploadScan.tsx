@@ -146,31 +146,11 @@ const UploadScan = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Upload & <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">Analyze</span>
+            Upload & <span className="bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">Analyze</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Upload your dental scan and let our AI-powered system analyze it for instant diagnosis
           </p>
-          <div className="mt-6 max-w-3xl mx-auto bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-            <h3 className="font-semibold text-yellow-800 dark:text-yellow-200 mb-2">⚠️ Important: Supported Image Types</h3>
-            <div className="text-sm text-yellow-700 dark:text-yellow-300 space-y-2">
-              <p><strong>✅ This model works ONLY with:</strong></p>
-              <ul className="list-disc list-inside ml-4">
-                <li>Intraoral color camera photos (close-up tooth pictures)</li>
-                <li>Direct tooth surface images</li>
-                <li>RGB color images (not X-rays)</li>
-              </ul>
-              <p className="mt-3"><strong>❌ This model DOES NOT work with:</strong></p>
-              <ul className="list-disc list-inside ml-4">
-                <li>Panoramic X-rays (OPG)</li>
-                <li>Bitewing or periapical X-rays</li>
-                <li>Grayscale medical images</li>
-                <li>Wide-field dental imaging</li>
-              </ul>
-              <p className="mt-3 font-semibold">⚠️ Model Accuracy: Research prototype with limited accuracy (31.6% mean F1 score)</p>
-              <p className="text-xs mt-2 italic">This is NOT a diagnostic tool. Always consult a dental professional.</p>
-            </div>
-          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
@@ -182,12 +162,12 @@ const UploadScan = () => {
                 Upload Dental Scan
               </CardTitle>
               <CardDescription>
-                Select an intraoral color photo (close-up of teeth)
+                Select a clear dental image for AI analysis
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div
-                className="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:border-green-500 transition-colors"
+                className="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition-colors"
                 onClick={() => fileInputRef.current?.click()}
               >
                 {preview ? (
@@ -209,9 +189,6 @@ const UploadScan = () => {
                       <p className="text-sm text-muted-foreground">
                         PNG, JPG, JPEG up to 10MB
                       </p>
-                      <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">
-                        Only intraoral color photos accepted
-                      </p>
                     </div>
                   </div>
                 )}
@@ -226,7 +203,7 @@ const UploadScan = () => {
               <Button
                 onClick={handleAnalyze}
                 disabled={!selectedFile || isAnalyzing}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                className="w-full bg-gradient-to-r from-green-600 to-green-600 hover:from-green-700 hover:to-green-700"
                 size="lg"
               >
                 {isAnalyzing ? (
@@ -258,7 +235,7 @@ const UploadScan = () => {
             <CardContent>
               {isAnalyzing ? (
                 <div className="flex flex-col items-center justify-center h-64 space-y-4">
-                  <Loader2 className="h-12 w-12 animate-spin text-green-600" />
+                  <Loader2 className="h-12 w-12 animate-spin text-blue-600" />
                   <p className="text-lg font-medium">Processing your scan...</p>
                   <p className="text-sm text-muted-foreground">
                     Our AI model is analyzing the image
@@ -315,7 +292,7 @@ const UploadScan = () => {
 
                   <Button
                     onClick={handleDownloadReport}
-                    className="w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700"
+                    className="w-full bg-gradient-to-r from-green-600 to-green-600 hover:from-green-700 hover:to-green-700"
                     size="lg"
                   >
                     <FiDownload className="mr-2 h-5 w-5" />

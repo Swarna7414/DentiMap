@@ -56,7 +56,7 @@ const About = () => {
       <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-white to-white dark:from-black dark:via-black dark:to-black">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Meet Our <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">Team</span>
+            Meet Our <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Team</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Passionate innovators dedicated to revolutionizing dental care through artificial intelligence and cutting-edge technology.
@@ -139,7 +139,7 @@ const About = () => {
               </div>
 
               <div className="hidden lg:block mt-20">
-                <h1 className="font-bold text-4xl bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">Who are we ?</h1>
+                <h1 className="font-bold text-4xl bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">Who are we ?</h1>
                 
                 <p className="text-justify font-semibold text-md mt-6">We’re students at the University of South Dakota who created this website to make helpful technology freely accessible to everyone. 
                   Our goal is to improve AI in healthcare by building practical, research-driven tools. By combining our technical skills with insights from the 
@@ -155,7 +155,7 @@ const About = () => {
       
       <div className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Our <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">Mission</span></h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Our <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Mission</span></h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-12">
             At DentiMap, we're committed to transforming dental healthcare through innovative AI technology. 
             Our mission is to make advanced dental diagnostics accessible, accurate, and immediate for everyone. 
@@ -170,7 +170,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-white"><TbBulb size={36}/></span>
               </div>
               <h3 className="text-xl font-bold mb-4">Innovation First</h3>
@@ -179,7 +179,7 @@ const About = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-emerald-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-white"><FaHeartCircleCheck/></span>
               </div>
               <h3 className="text-xl font-bold mb-4">Patient-Centered</h3>
