@@ -1,5 +1,5 @@
 // Service to interact with the Dentimap API on Hugging Face
-const API_BASE_URL = "https://harshithreddy01-dentimap.hf.space/api/v1";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://harshithreddy01-dentimap.hf.space/api/v1";
 
 interface AnalysisResult {
   segmentedImage: string;
