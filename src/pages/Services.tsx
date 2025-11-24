@@ -8,6 +8,7 @@ import { IoIosCamera } from "react-icons/io";
 import Test from "../asserts/Test.png";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 
 const Services = () => {
@@ -72,9 +73,11 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white border-0`}>
-                    Get Started
-                  </Button>
+                  <Link to={service.title === "Upload & Analyze" ? "/upload-scan" : "#"}>
+                    <Button className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white border-0`}>
+                      Get Started
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
