@@ -232,6 +232,33 @@ export const generatePDFReport = async (
   doc.setFontSize(8);
   doc.setFont("helvetica", "italic");
   doc.text("This analysis is for informational purposes only. Please consult a dental professional for diagnosis.", pageWidth / 2, footerY + 23, { align: "center" });
+  
+  yPosition = footerY + 30;
+  doc.setFillColor(255, 243, 205);
+  doc.rect(15, yPosition, pageWidth - 30, 35, "F");
+  
+  doc.setDrawColor(255, 193, 7);
+  doc.setLineWidth(1);
+  doc.rect(15, yPosition, pageWidth - 30, 35);
+  
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(139, 69, 19);
+  doc.text("⚠️ IMPORTANT DISCLAIMER", pageWidth / 2, yPosition + 7, { align: "center" });
+  
+  doc.setFontSize(8);
+  doc.setFont("helvetica", "normal");
+  const disclaimerText = [
+    "This AI model is a RESEARCH PROTOTYPE with limited accuracy (31.6% mean F1 score).",
+    "It is designed ONLY for intraoral color camera photos, NOT X-rays or panoramic scans.",
+    "Results may be inaccurate and should NOT be used for medical diagnosis or treatment decisions.",
+    "Always consult a qualified dental professional for proper diagnosis and treatment."
+  ];
+  let disclaimerY = yPosition + 13;
+  disclaimerText.forEach(line => {
+    doc.text(line, pageWidth / 2, disclaimerY, { align: "center", maxWidth: pageWidth - 40 });
+    disclaimerY += 5;
+  });
 
   // Save the PDF
   const fileName = `DentiMap_Analysis_${new Date().toISOString().split("T")[0]}.pdf`;

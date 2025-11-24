@@ -55,14 +55,14 @@ const Contact = () => {
                   <h2 className="text-xl font-medium mb-4 text-foreground">Ways to reach us</h2>
                   <div className="space-y-5">
                     <div className="flex items-start gap-3">
-                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
-                        <IoIosMail className="h-6 w-6 text-blue-600" />
+                      <div className="mt-1 p-2 bg-green-600/20 rounded-md">
+                        <IoIosMail className="h-6 w-6 text-green-600" />
                       </div>
                       <div>
                         <p className="text-base font-medium text-muted-foreground mb-1">Email</p>
                         <a 
                           href="mailto:dentimap527@gmail.com" 
-                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
+                          className="text-foreground hover:text-green-600 hover:underline text-base transition-colors"
                         >
                           dentimap527@gmail.com
                         </a>
@@ -70,14 +70,14 @@ const Contact = () => {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
-                        <FaPhoneAlt className="h-6 w-6 text-blue-600" />
+                      <div className="mt-1 p-2 bg-green-600/20 rounded-md">
+                        <FaPhoneAlt className="h-6 w-6 text-green-600" />
                       </div>
                       <div>
                         <p className="text-base font-medium text-muted-foreground mb-1">Phone</p>
                         <a 
                           href="tel:+16052027777" 
-                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
+                          className="text-foreground hover:text-green-600 hover:underline text-base transition-colors"
                         >
                           +1 605 202 7777
                         </a>
@@ -85,8 +85,8 @@ const Contact = () => {
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
-                        <IoLocation className="h-6 w-6 text-blue-600" />
+                      <div className="mt-1 p-2 bg-green-600/20 rounded-md">
+                        <IoLocation className="h-6 w-6 text-green-600" />
                       </div>
                       <div>
                         <p className="text-base font-medium text-muted-foreground mb-1">Location</p>
@@ -159,7 +159,7 @@ const Contact = () => {
 
                   <Button 
                     type="submit" 
-                    className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-base"
+                    className="w-full h-12 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-base"
                   >
                     <IoIosSend className="mr-2 h-5 w-5" />
                     Send

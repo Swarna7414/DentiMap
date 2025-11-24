@@ -36,7 +36,7 @@ const Navbar = () => {
               alt="DentiMap Logo" 
               className="h-6 w-6 mt-0.5"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">
               DentiMap
             </span>
           </Link>

@@ -18,14 +18,14 @@ const Services = () => {
       title: "Live AI Model",
       description: "Real-time dental analysis using advanced microcamera technology connected to our AI system.",
       features: ["Continuous monitoring", "Instant diagnosis", "Real-time alerts"],
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-green-400 to-green-600"
     },
     {
       icon: FiUpload,
       title: "Upload & Analyze",
-      description: "Upload your dental scans and get comprehensive AI-powered analysis and diagnosis.",
-      features: ["High-accuracy scanning", "Detailed reports", "Multiple format support", "Quick results"],
-      gradient: "from-purple-500 to-pink-500"
+      description: "Upload intraoral dental photos for experimental AI-powered segmentation analysis.",
+      features: ["Intraoral photo analysis", "Segmentation visualization", "Research prototype", "Educational tool"],
+      gradient: "from-green-600 to-emerald-700"
     },
     {
       icon: CiChat1,
@@ -42,7 +42,7 @@ const Services = () => {
       <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-white to-white dark:from-black dark:via-black dark:to-black">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Our <span className="bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">AI Services</span>
+            Our <span className="bg-gradient-to-r from-green-600 to-green-600 bg-clip-text text-transparent">AI Services</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Experience the future of dental care with our cutting-edge AI-powered services designed to revolutionize dental diagnostics and patient care.
@@ -91,7 +91,7 @@ const Services = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Powered by Advanced <span className="text-blue-600">AI Technology</span>
+                Powered by Advanced <span className="text-green-600">AI Technology</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Our DentiMap system leverages state-of-the-art machine learning algorithms and computer vision 
@@ -99,12 +99,12 @@ const Services = () => {
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <LuBrainCircuit className="h-12 w-12 text-blue-600 mx-auto mb-3" />
+                  <LuBrainCircuit className="h-12 w-12 text-green-600 mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">Deep Learning</h3>
                   <p className="text-sm text-muted-foreground">Advanced neural networks for pattern recognition</p>
                 </div>
                 <div className="text-center">
-                  <IoSync className="h-12 w-12 text-purple-600 mx-auto mb-3" />
+                  <IoSync className="h-12 w-12 text-emerald-600 mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">Real-time Processing</h3>
                   <p className="text-sm text-muted-foreground">Instant analysis and immediate results</p>
                 </div>
