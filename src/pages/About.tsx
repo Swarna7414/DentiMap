@@ -188,7 +188,7 @@ const About = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-white"><TbStarFilled/></span>
               </div>
               <h3 className="text-xl font-bold mb-4">Excellence</h3>

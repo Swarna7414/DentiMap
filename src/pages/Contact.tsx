@@ -62,7 +62,7 @@ const Contact = () => {
                         <p className="text-base font-medium text-muted-foreground mb-1">Email</p>
                         <a 
                           href="mailto:dentimap527@gmail.com" 
-                          className="text-foreground hover:text-green-600 hover:underline text-base transition-colors"
+                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
                         >
                           dentimap527@gmail.com
                         </a>
@@ -77,7 +77,7 @@ const Contact = () => {
                         <p className="text-base font-medium text-muted-foreground mb-1">Phone</p>
                         <a 
                           href="tel:+16052027777" 
-                          className="text-foreground hover:text-green-600 hover:underline text-base transition-colors"
+                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
                         >
                           +1 605 202 7777
                         </a>

@@ -162,7 +162,7 @@ export const generatePDFReport = async (
     } else if (problem.severity === "Moderate") {
       doc.setFillColor(234, 179, 8); // Yellow
     } else {
-      doc.setFillColor(34, 197, 94); // Green
+      doc.setFillColor(37, 99, 235);
     }
     doc.roundedRect(severityX, yPosition - 4, 30, 7, 2, 2, "F");
     doc.setFontSize(9);

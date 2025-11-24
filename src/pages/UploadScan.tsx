@@ -203,7 +203,7 @@ const UploadScan = () => {
               <Button
                 onClick={handleAnalyze}
                 disabled={!selectedFile || isAnalyzing}
-                className="w-full bg-gradient-to-r from-green-600 to-green-600 hover:from-green-700 hover:to-green-700"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700"
                 size="lg"
               >
                 {isAnalyzing ? (
@@ -260,7 +260,7 @@ const UploadScan = () => {
                           <span className={`px-2 py-1 rounded text-xs font-semibold ${
                             problem.severity === "High" ? "bg-red-500 text-white" :
                             problem.severity === "Moderate" ? "bg-yellow-500 text-white" :
-                            "bg-green-500 text-white"
+                            "bg-blue-500 text-white"
                           }`}>
                             {problem.severity}
                           </span>
@@ -292,7 +292,7 @@ const UploadScan = () => {
 
                   <Button
                     onClick={handleDownloadReport}
-                    className="w-full bg-gradient-to-r from-green-600 to-green-600 hover:from-green-700 hover:to-green-700"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700"
                     size="lg"
                   >
                     <FiDownload className="mr-2 h-5 w-5" />

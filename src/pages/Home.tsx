@@ -70,8 +70,8 @@ const Home = () => {
               <p className="text-sm text-gray-400">Deep learning powered diagnostics</p>
             </div>
             <div className="text-center hover:cursor-pointer">
-              <div className="w-16 h-16 bg-green-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <FaCheckCircle className="h-8 w-8 text-green-400" />
+              <div className="w-16 h-16 bg-blue-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <FaCheckCircle className="h-8 w-8 text-blue-400" />
               </div>
               <h3 className="text-lg font-semibold dark:text-white mb-2">Instant Results</h3>
               <p className="text-sm text-gray-400">Get immediate diagnostic feedback</p>

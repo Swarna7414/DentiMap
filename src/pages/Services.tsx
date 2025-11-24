@@ -32,7 +32,7 @@ const Services = () => {
       title: "AI Chat Consultation",
       description: "Discuss your dental concerns with our AI assistant for personalized advice and guidance.",
       features: ["24/7 availability", "Personalized responses", "Treatment suggestions", "Follow-up care"],
-      gradient: "from-green-500 to-teal-500"
+      gradient: "from-blue-500 to-cyan-500"
     }
   ];
 
@@ -109,7 +109,7 @@ const Services = () => {
                   <p className="text-sm text-muted-foreground">Instant analysis and immediate results</p>
                 </div>
                 <div className="text-center">
-                  <LuSearchCheck className="h-12 w-12 text-green-600 mx-auto mb-3" />
+                  <LuSearchCheck className="h-12 w-12 text-blue-600 mx-auto mb-3" />
                   <h3 className="font-semibold mb-2"> Smart Detection</h3>
                   <p className="text-sm text-muted-foreground">Trained to detect early signs of dental disease</p>
                 </div>
