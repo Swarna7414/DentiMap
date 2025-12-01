@@ -8,12 +8,12 @@ DentAI Vision is a cutting-edge platform that combines dental healthcare with ar
 
 ## Features
 
-- 🦷 AI-powered dental health assistant (Denti Jha)
-- 💻 Modern, responsive user interface
-- 🔒 Secure authentication system (optional for chat)
-- 📊 Real-time chat responses
-- 📱 Cross-platform compatibility
-- 🤖 Frontend-only AI chat (no backend required)
+- AI-powered dental health assistant (Denti Jha)
+- Modern, responsive user interface
+- Secure authentication system (optional for chat)
+- Real-time chat responses
+- Cross-platform compatibility
+- Frontend-only AI chat (no backend required)
 
 ## Tech Stack
 
