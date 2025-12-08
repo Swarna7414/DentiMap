@@ -14,18 +14,18 @@ import { Link } from "react-router-dom";
 const Services = () => {
   const services = [
     {
-      icon: FaVideo,
-      title: "Live AI Model",
-      description: "Real-time dental analysis using advanced microcamera technology connected to our AI system.",
-      features: ["Continuous monitoring", "Instant diagnosis", "Real-time alerts"],
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
       icon: FiUpload,
       title: "Upload & Analyze",
       description: "Upload your dental scans and get comprehensive AI-powered analysis and diagnosis.",
       features: ["High-accuracy scanning", "Detailed reports", "Multiple format support", "Quick results"],
       gradient: "from-blue-600 to-blue-700"
+    },
+    {
+      icon: FaVideo,
+      title: "Live AI Model",
+      description: "Real-time dental analysis using advanced microcamera technology connected to our AI system.",
+      features: ["Continuous monitoring", "Instant diagnosis", "Real-time alerts"],
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       icon: CiChat1,
@@ -42,16 +42,15 @@ const Services = () => {
       <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 via-white to-white dark:from-black dark:via-black dark:to-black">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Our <span className="bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">AI Services</span>
+            Our <span>AI Services</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Experience the future of dental care with our cutting-edge AI-powered services designed to revolutionize dental diagnostics and patient care.
+            Discover a simpler, smarter way to care for your teeth. Our AI-powered tools help dentists quickly spot dental issues
           </p>
         </div>
       </div>
-
       
-              <div className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+      <div className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
