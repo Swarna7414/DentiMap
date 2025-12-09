@@ -1,20 +1,18 @@
 import { useState } from "react";
-import { IoIosSend } from "react-icons/io";
-import { IoIosMail } from "react-icons/io";
-import { FaPhoneAlt } from "react-icons/fa";
-import { IoLocation } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import Footer from "@/components/Footer";
+import { Mail, Phone, MapPin, Video } from "lucide-react";
+import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram, FaMedium } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    subject: "",
     message: ""
   });
   const { toast } = useToast();
@@ -25,7 +23,7 @@ const Contact = () => {
       title: "Got it!",
       description: "We'll be in touch soon.",
     });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ firstName: "", lastName: "", email: "", message: "" });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -36,135 +34,138 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <div className="pt-16">
-        <div className="py-12 px-4 sm:px-6 lg:px-8 bg-background">
-          <div className="max-w-5xl mx-auto">
-            <div className="mb-10">
-              <h1 className="text-4xl md:text-5xl font-semibold mb-3 text-foreground">
-                Contact Us
-              </h1>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Questions? Ideas? Just want to chat? Drop us a line and we'll get back to you.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-              <div className="space-y-6">
+        <div className="py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+              {/* Left Side - Contact Me Section */}
+              <div className="relative">
                 <div>
-                  <h2 className="text-xl font-medium mb-4 text-foreground">Ways to reach us</h2>
-                  <div className="space-y-5">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
-                        <IoIosMail className="h-6 w-6 text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="text-base font-medium text-muted-foreground mb-1">Email</p>
-                        <a 
-                          href="mailto:dentimap527@gmail.com" 
-                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
-                        >
-                          dentimap527@gmail.com
-                        </a>
-                      </div>
+                  <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-16 text-gray-900 dark:text-gray-100">
+                    Contact us
+                  </h1>
+                  
+                  {/* Contact Information */}
+                  <div className="space-y-10 mb-12">
+                    {/* Email */}
+                    <div className="flex items-start gap-6">
+                      <Mail className="h-9 w-9 text-gray-900 dark:text-gray-100 mt-1 flex-shrink-0" />
+                      <a 
+                        href="mailto:dentimap527@gmail.com" 
+                        className="text-xl md:text-2xl text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        dentimap527@gmail.com
+                      </a>
                     </div>
 
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
-                        <FaPhoneAlt className="h-6 w-6 text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="text-base font-medium text-muted-foreground mb-1">Phone</p>
-                        <a 
-                          href="tel:+16052027777" 
-                          className="text-foreground hover:text-blue-600 hover:underline text-base transition-colors"
-                        >
-                          +1 605 202 7777
-                        </a>
-                      </div>
+                    {/* Phone */}
+                    <div className="flex items-start gap-6">
+                      <Phone className="h-9 w-9 text-gray-900 dark:text-gray-100 mt-1 flex-shrink-0" />
+                      <a 
+                        href="tel:+16052027777" 
+                        className="text-xl md:text-2xl text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        +1 605 202 7777
+                      </a>
                     </div>
 
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 p-2 bg-blue-600/20 rounded-md">
-                        <IoLocation className="h-6 w-6 text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="text-base font-medium text-muted-foreground mb-1">Location</p>
-                        <p className="text-foreground text-base">
-                          414 E Clark St<br />
-                          Vermillion, SD 57069
-                        </p>
+                    {/* Address */}
+                    <div className="flex items-start gap-6">
+                      <MapPin className="h-9 w-9 text-gray-900 dark:text-gray-100 mt-1 flex-shrink-0" />
+                      <div className="text-xl md:text-2xl text-gray-900 dark:text-gray-100">
+                        <div>Department of Computer Science,</div>
+                        <div>414 E. Clark Street,</div>
+                        <div>Vermillion, SD 57069</div>
                       </div>
                     </div>
                   </div>
-                </div>
 
+                  {/* Let's Meet Button */}
+                  <Button 
+                    className="w-full md:w-full md:max-w-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold text-2xl px-12 py-6 rounded-lg mb-12 transition-all shadow-md hover:shadow-lg"
+                    onClick={() => {
+                      // You can add video call functionality here
+                      toast({
+                        title: "Let's Meet!",
+                        description: "We'll schedule a meeting soon.",
+                      });
+                    }}
+                  >
+                    Let's Meet
+                    
+                  </Button>
+                </div>
               </div>
 
-              <div>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-base">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                      required
-                      className="h-12 text-base"
-                    />
-                  </div>
+              {/* Right Side - Form Card */}
+              <div className="relative">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 md:p-10 border border-gray-100 dark:border-gray-700">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        First name<span className="text-red-500 ml-1">*</span>
+                      </Label>
+                      <Input
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                        className="h-12 text-base bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-base">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="your.email@example.com"
-                      required
-                      className="h-12 text-base"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Last name
+                      </Label>
+                      <Input
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className="h-12 text-base bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-base">Subject</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="What's on your mind?"
-                      required
-                      className="h-12 text-base"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Email<span className="text-red-500 ml-1">*</span>
+                      </Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}                       required
+                        className="h-12 text-base bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-base">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us what you're thinking..."
-                      required
-                      rows={5}
-                      className="resize-none text-base"
-                    />
-                  </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        What can we help you with?
+                      </Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={6}
+                        className="resize-y text-base bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent min-h-[120px]"
+                      />
+                    </div>
 
-                  <Button 
-                    type="submit" 
-                    className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-base"
-                  >
-                    <IoIosSend className="mr-2 h-5 w-5" />
-                    Send
-                  </Button>
-                </form>
+                    <Button 
+                      type="submit" 
+                      className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-base font-medium rounded-lg transition-colors shadow-md hover:shadow-lg"
+                    >
+                      Submit
+                    </Button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

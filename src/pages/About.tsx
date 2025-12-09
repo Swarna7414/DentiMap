@@ -76,7 +76,7 @@ const About = () => {
                     <img
                       src={TechinalLead}
                       alt={"DebashJha"}
-                      className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
@@ -112,7 +112,7 @@ const About = () => {
                         <img
                           src={member.image}
                           alt={member.name}
-                          className="w-full h-48 object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                          className="w-full h-48 object-cover object-top"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         
