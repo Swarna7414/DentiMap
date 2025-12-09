@@ -18,7 +18,7 @@ const Services = () => {
       title: "Upload & Analyze",
       description: "Upload your dental scans and get comprehensive AI-powered analysis and diagnosis.",
       features: ["High-accuracy scanning", "Detailed reports", "Multiple format support", "Quick results"],
-      gradient: "from-blue-600 to-blue-700"
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       icon: FaVideo,
@@ -90,7 +90,7 @@ const Services = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Powered by Advanced <span className="text-blue-600">AI Technology</span>
+                Powered by Advanced AI Technology
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Our DentiMap system leverages state-of-the-art machine learning algorithms and computer vision 
@@ -98,22 +98,22 @@ const Services = () => {
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <LuBrainCircuit className="h-12 w-12 text-blue-600 mx-auto mb-3" />
+                  <LuBrainCircuit className="h-12 w-12 dark:text-blue-600 text-gray-700 mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">Deep Learning</h3>
                   <p className="text-sm text-muted-foreground">Advanced neural networks for pattern recognition</p>
                 </div>
                 <div className="text-center">
-                  <IoSync className="h-12 w-12 text-blue-600 mx-auto mb-3" />
+                  <IoSync className="h-12 w-12 dark:text-blue-600 text-gray-700 mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">Real-time Processing</h3>
                   <p className="text-sm text-muted-foreground">Instant analysis and immediate results</p>
                 </div>
                 <div className="text-center">
-                  <LuSearchCheck className="h-12 w-12 text-blue-600 mx-auto mb-3" />
+                  <LuSearchCheck className="h-12 w-12 dark:text-blue-600 text-gray-700 mx-auto mb-3" />
                   <h3 className="font-semibold mb-2"> Smart Detection</h3>
                   <p className="text-sm text-muted-foreground">Trained to detect early signs of dental disease</p>
                 </div>
                 <div className="text-center">
-                  <IoIosCamera className="h-12 w-12 text-orange-600 mx-auto mb-3" />
+                  <IoIosCamera className="h-12 w-12 dark:text-blue-600 text-gray-700 mx-auto mb-3" />
                   <h3 className="font-semibold mb-2">HD Imaging</h3>
                   <p className="text-sm text-muted-foreground">Crystal clear microcamera technology</p>
                 </div>
